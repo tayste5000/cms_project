@@ -1,0 +1,84 @@
+
+/*styling the editors, there are several elements controlling the height via "min-height"*/
+.ta-editor, .ta-editor > .ta-bind, .ta-editor.ta-html, .ta-scroll-window.form-control {
+ 	min-height: 50px;
+}
+
+/*styling the toolbar*/
+
+.statictoolbar{
+	position: fixed;
+	top: 12px;
+	z-index: 200;
+	left: 0;
+	right: 0;
+	text-align:center;
+}
+
+.statictoolbar > .btn-group{
+	float:none;
+	margin: 5px;
+}
+
+/*adding padding to the body so that the tool-bar doesn't cover up stuff in the initia view*/
+body{
+	padding-top:100px;
+}
+
+/*
+setting the visibility of different aspects of the cms fields.
+The idea is that the class 'cms-edit' is toggled on and off to represent
+the "editing" state of a field, i.e. if it has cms-edit than it is editable.
+really whats going on is that there is a div and a form containing identical text
+that are switched in an out of view
+*/
+.cms-container .cms-form{
+	display:none;
+}
+
+.cms-container.cms-edit .cms-form{
+	display: block;
+}
+
+.cms-container .cms-display{
+	display:block;
+}
+
+.cms-container.cms-edit .cms-display{
+	display:none;
+}
+
+
+/*
+adding some styling to the cms-fields, this makes the non-editable form look completely normal
+until you hover with the mouse, then a bright color outline and edit icon show up
+clicking the edit icon makes the field editable and freeze the outline styling
+*/
+.cms-container{
+	position:relative;
+}
+
+.cms-container:hover, .cms-container.cms-edit{
+	outline: 1px solid lime;
+}
+
+.cms-icon{
+	position: absolute;
+  	right: 0;
+  	bottom: 0;
+  	padding: 5px;
+  	font-size: 20px;
+  	background-color: transparent;
+  	color: transparent;
+}
+
+.cms-container:hover .cms-icon, .cms-container.cms-edit .cms-icon{
+	background-color:lime;
+	color: rgb(59, 167, 59);
+}
+
+.cms-container:hover .cms-icon:hover{
+	color:#1d1d1d;
+	cursor: pointer;
+}
+

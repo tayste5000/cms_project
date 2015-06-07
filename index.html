@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Bootstrap CSS -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Fontawesome -->
+	<link href="font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+	<link rel='stylesheet' href='text_angular/textAngular.css'>
+
+	<!-- Custom CSS -->
+	<link href="css/custom.css" rel="stylesheet" type="text/css">
+
+	<title>text_angular test</title>
+
+</head>
+<body>
+
+
+<div class="container">
+	<div ng-app="textAngularTest" ng-controller="wysiwygeditor" class="container app row">
+
+		<div text-angular-toolbar name="statictoolbar" class="statictoolbar"></div>
+
+		<!--
+			Each cms field requires the following properties:
+				-must be wrapped in a form with the class 'cms-container'
+				-must have a name coresponding to the name of the field in the database (DBname)
+				-must have a <text-angular> element w/ the class 'cms-form'
+					-'cms-form' must have its name and ng-model attribute set to the DBname (name = DBname, ng-model = data.DBname)
+					-'cms-form' must be linked to the name of the toolbar
+				-must have a div element with the class 'cms-display'
+					-'cms-display' must also have ng-model = data.DBname and name = DBname
+				-must have a fontawesome pseudobutton with the class 'cms-icon'
+					-must have the attribute data-ng-submit set to send(data.DBname)
+
+				-each field name must be unique
+		-->
+
+  		<form name="title" class="cms-container">
+
+		  	<text-angular
+		    	name="title"
+		    	ng-if="canEdit"
+		    	ng-model="data.title"
+		    	tabindex="3"
+		    	placeholder=""
+		    	required
+		    	ta-default-wrap="p"
+		    	ta-target-toolbars='statictoolbar'
+		    	ng-model-options="{debounce: 1000}"
+		    	class="cms-form"
+		    ></text-angular>
+		    
+		    <div
+		    	ta-bind
+		    	name="title"
+		    	ng-model="data.title"
+		    	placeholder=""
+		    	required
+		    	ng-model-options="{debounce: 1000}"
+		    	class="cms-display"
+		    ></div>
+
+		    <i class="fa fa-pencil cms-icon" data-ng-submit="send(data.title)"></i>
+		</form>
+
+		<div class="col-sm-6">
+	  		<form name="content1" class="cms-container">
+
+			  	<text-angular
+			    	name="content1"
+			    	ng-if="canEdit"
+			    	ng-model="data.content1"
+			    	tabindex="3"
+			    	placeholder=""
+			    	required
+			    	ta-default-wrap="p"
+			    	ta-target-toolbars='statictoolbar'
+			    	ng-model-options="{debounce: 1000}"
+			    	class="cms-form"
+			    ></text-angular>
+			    
+			    <div
+			    	ta-bind
+			    	name="content1"
+			    	ng-model="data.content1"
+			    	placeholder=""
+			    	required
+			    	ng-model-options="{debounce: 1000}"
+			    	class="cms-display"
+			    ></div>
+
+			    <i class="fa fa-pencil cms-icon" data-ng-submit="send(data.content1)"></i>
+			</form>
+	  	</div>
+
+	  	<div class="col-sm-6">
+	  		<form name="content2" class="cms-container">
+
+			  	<text-angular
+			    	name="content2"
+			    	ng-if="canEdit"
+			    	ng-model="data.content2"
+			    	tabindex="3"
+			    	placeholder=""
+			    	required
+			    	ta-default-wrap="p"
+			    	ta-target-toolbars='statictoolbar'
+			    	ng-model-options="{debounce: 1000}"
+			    	class="cms-form"
+			    ></text-angular>
+			    
+			    <div
+			    	ta-bind
+			    	name="content2"
+			    	ng-model="data.content2"
+			    	placeholder=""
+			    	required
+			    	ng-model-options="{debounce: 1000}"
+			    	class="cms-display"
+			    ></div>
+
+			    <i class="fa fa-pencil cms-icon" data-ng-submit="send(data.content2)"></i>
+			</form>
+	  	</div>
+
+
+	</div>
+</div>
+
+
+	
+<!-- scripts -->
+<script src='js/jquery.min.js'></script>
+<script src='js/angular.min.js'></script>
+<script src='rangy/rangy-core.js'></script>
+<script src='rangy/rangy-selectionsaverestore.js'></script> 
+<script src='text_angular/textAngular-rangy.min.js'></script>
+<script src='text_angular/textAngular-sanitize.min.js'></script>
+<script src='text_angular/textAngular.min.js'></script>
+<script src='js/test.js'></script>
+<!-- scripts -->
+
+</body>
+</html> 
